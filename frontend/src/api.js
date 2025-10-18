@@ -27,3 +27,4 @@ export async function generateStory(prompt) {
   return res.json();
 }
 
+
