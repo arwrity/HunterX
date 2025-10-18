@@ -70,7 +70,7 @@ def generate_image(data: PromptRequest):
         res.raise_for_status()
         job = res.json()
         job_id = job.get("id")
-        logging.info( Started image generation: {job_id}")
+        logging.info(f" Started image generation: {job_id}")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Ошибка при создании изображения: {e}")
 
@@ -83,7 +83,7 @@ def generate_image(data: PromptRequest):
 
         if status == "completed":
             image_url = job_data["jobs"][0]["results"]["raw"]["url"]
-            logging.info( Image ready: {image_url}")
+            logging.info(f" Image ready: {image_url}")
             return {"status": "completed", "image_url": image_url}
         elif status == "failed":
             raise HTTPException(status_code=500, detail="Image generation failed")
@@ -135,7 +135,7 @@ def generate_video_minimax(data: MinimaxRequest):
 
         job = res.json()
         job_id = job.get("id")
-        logging.info( Minimax job created: {job_id}")
+        logging.info(f"🎞️ Minimax job created: {job_id}")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Ошибка при создании видео: {e}")
 
@@ -148,16 +148,16 @@ def generate_video_minimax(data: MinimaxRequest):
 
         if status == "completed":
             video_url = job_data["jobs"][0]["results"]["raw"]["url"]
-            logging.info( Видео готово: {video_url}")
+            logging.info(f" Видео готово: {video_url}")
             return {"status": "completed", "video_url": video_url}
         elif status == "failed":
-            logging.error( Minimax job failed: {job_data}")
+            logging.error(f" Minimax job failed: {job_data}")
             raise HTTPException(
                 status_code=500,
                 detail=f"Ошибка генерации видео: {job_data}"
             )
 
-    raise HTTPException(status_code=408, detail=" Таймаут ожидания результата.")
+    raise HTTPException(status_code=408, detail="Таймаут ожидания результата.")
 
 
 
@@ -184,7 +184,7 @@ def generate_story(data: PromptRequest):
         res.raise_for_status()
         job = res.json()
         job_id = job.get("id")
-        logging.info( Started story generation: {job_id}")
+        logging.info(f" Started story generation: {job_id}")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Ошибка при создании видео: {e}")
 
@@ -197,7 +197,7 @@ def generate_story(data: PromptRequest):
 
         if status == "completed":
             video_url = job_data["jobs"][0]["results"]["raw"]["url"]
-            logging.info( Story video ready: {video_url}")
+            logging.info(f" Story video ready: {video_url}")
             return {
                 "status": "completed",
                 "video_url": video_url,
@@ -207,4 +207,5 @@ def generate_story(data: PromptRequest):
             raise HTTPException(status_code=500, detail="Story video generation failed")
 
     raise HTTPException(status_code=408, detail="Таймаут ожидания результата.")
+
 
