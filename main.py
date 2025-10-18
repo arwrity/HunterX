@@ -9,7 +9,8 @@ app = FastAPI(title="Story Generator")
 
 origins = [
     "http://localhost:3000",  
-    "http://127.0.0.1:3000",  
+    "http://127.0.0.1:3000", 
+    "https://hunter-kv3snv13h-arwritys-projects.vercel.app"
 ]
 
 app.add_middleware(
