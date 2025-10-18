@@ -1,4 +1,4 @@
-export const API_BASE = "http://127.0.0.1:8081";
+export const API_BASE = "https://hunterx-1u94.onrender.com";
 
 export async function generateImage(prompt) {
   const res = await fetch(`${API_BASE}/generate_image`, {
