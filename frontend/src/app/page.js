@@ -87,6 +87,16 @@ export default function Home() {
     }
   };
 
+  // Функция для копирования ссылки
+  const handleCopyLink = async () => {
+    try {
+      await navigator.clipboard.writeText(resultUrl);
+      alert("Ссылка скопирована в буфер обмена!");
+    } catch (err) {
+      alert("Не удалось скопировать ссылку: " + err.message);
+    }
+  };
+
   
   const handleSetMode = (newMode) => {
     setMode(newMode);
@@ -244,17 +254,25 @@ export default function Home() {
               loop
               className="rounded-2xl border-2 border-green-400 shadow-[0_0_40px_#00ff99] w-[480px]"
             />
-          )}
-
-        
-          <button
-            onClick={handleDownload}
-            className="mt-4 py-2 px-5 rounded-xl bg-gradient-to-r from-green-400 to-fuchsia-500 text-black font-semibold hover:scale-105 transition-transform duration-300 shadow-[0_0_20px_#00ff99]"
-          >
-            Download result
-          </button>
+          )} 
+              
+          <div className="flex gap-3 mt-4">
+            <button
+              onClick={handleDownload}
+              className="py-2 px-5 rounded-xl bg-gradient-to-r from-green-400 to-fuchsia-500 text-black font-semibold hover:scale-105 transition-transform duration-300 shadow-[0_0_20px_#00ff99]"
+            >
+              Download
+            </button>
+            <button
+              onClick={handleCopyLink}
+              className="py-2 px-5 rounded-xl bg-gradient-to-r from-fuchsia-500 to-green-400 text-black font-semibold hover:scale-105 transition-transform duration-300 shadow-[0_0_20px_#bb00ff]"
+            >
+              Copy URL
+            </button>
+          </div> 
         </div>
-      )}
+      )} 
+      
 
       <footer className="mt-12 text-sm text-gray-500">
         Powered by <span className="text-green-400">Higgsfield API</span> 
