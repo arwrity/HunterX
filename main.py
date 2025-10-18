@@ -209,3 +209,4 @@ def generate_story(data: PromptRequest):
     raise HTTPException(status_code=408, detail="Таймаут ожидания результата.")
 
 
+
