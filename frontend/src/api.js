@@ -1,4 +1,4 @@
-export const API_BASE = "http://127.0.0.1:8080";
+export const API_BASE = "http://127.0.0.1:8081";
 
 export async function generateImage(prompt) {
   const res = await fetch(`${API_BASE}/generate_image`, {
@@ -26,3 +26,4 @@ export async function generateStory(prompt) {
   });
   return res.json();
 }
+
