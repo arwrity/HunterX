@@ -92,7 +92,7 @@ def generate_image(data: PromptRequest):
 
     raise HTTPException(status_code=408, detail="Таймаут ожидания результата.")
 
-@app.post("/generate_vide_minimax")
+@app.post("/generate_video_minimax")
 def generate_video_minimax(data: MinimaxRequest):
     """Создание видео из изображения (Minimax Hailuo 02)."""
     headers = {
