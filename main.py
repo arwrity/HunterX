@@ -34,7 +34,7 @@ API_KEY = os.getenv("HIGGSFIELD_API_KEY")
 API_SECRET = os.getenv("HIGGSFIELD_API_SECRET")
 
 if not API_KEY or not API_SECRET:
-    raise RuntimeError("❌ Missing Higgsfield API keys in environment variables.")
+    raise RuntimeError(" Missing Higgsfield API keys in environment variables.")
 
 
 
@@ -142,7 +142,7 @@ def generate_video_minimax(data: MinimaxRequest):
 
         job = res.json()
         job_id = job.get("id")
-        logging.info(f"🎞️ Minimax job created: {job_id}")
+        logging.info(f" Minimax job created: {job_id}")
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Ошибка при создании видео: {e}")
 
