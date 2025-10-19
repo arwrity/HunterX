@@ -28,8 +28,14 @@ BASE_URL = "https://platform.higgsfield.ai"
 TEXT2IMG_MODEL = "v1/text2image/nano-banana"   
 TEXT2VIDEO_MODEL = "generate/minimax-t2v"      
 
-API_KEY = "a784704c-e4b6-4869-9c97-c9966c429d7f"
-API_SECRET = "28881e2e4520cb3c59473de86c24aad03e32d0b9a2d9fdeaa2df62f8f94ccf88"
+import os
+
+API_KEY = os.getenv("HIGGSFIELD_API_KEY")
+API_SECRET = os.getenv("HIGGSFIELD_API_SECRET")
+
+if not API_KEY or not API_SECRET:
+    raise RuntimeError("❌ Missing Higgsfield API keys in environment variables.")
+
 
 
 logging.basicConfig(filename="higgs.log", level=logging.INFO, format="%(asctime)s - %(message)s")
